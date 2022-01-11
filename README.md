@@ -8,7 +8,7 @@ infrastructure setup:
 [nginx redirector](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) &rarr;
 target framework (e.g. [gophish](https://getgophish.com/))
 
-the nginx redirector with the target framework stays hidden behing the azure function.
+the nginx redirector with the target framework stays hidden behind the azure function.
 
 ## config files in this repo
 
@@ -17,6 +17,22 @@ the nginx redirector with the target framework stays hidden behing the azure fun
 * [/azurefunction/OwaCheckIn_track](./azurefunction/OwaCheckin_track): endpoint files for tracking email opening (for gophish)
 * [/nginx](./nginx): nginx configuration
 * [/nginx/sites-available/phish.conf](./nginx/sites-available/phish.conf): nginx redirector accepting azurefunction and forwarding to local (gophish) framework
+
+### azure function usage
+
+with [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local).
+
+local testing:
+
+```
+func start
+```
+
+deployment to prod with app name `evil` (after logging in with `az login`):
+
+```
+func azure functionapp publish evil
+```
 
 ## recommended sending profile
 
